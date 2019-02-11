@@ -28,7 +28,26 @@ public class Movement : MonoBehaviour
             // We are grounded, so recalculate
             // move direction directly from axes
 
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            //moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+
+            if(Input.GetKey(KeyCode.Z))
+            {
+                moveDirection += this.transform.forward;
+            }
+            if(Input.GetKey(KeyCode.Q))
+            {
+                moveDirection -= this.transform.right;
+            }
+            if(Input.GetKey(KeyCode.S))
+            {
+                moveDirection -= this.transform.forward;
+            }
+            if(Input.GetKey(KeyCode.D))
+            {
+                moveDirection += this.transform.right;
+            }
+
+
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection = moveDirection * speed;
 
